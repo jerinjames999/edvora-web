@@ -18,19 +18,21 @@ import HomeBody from './HomeBody/HomeBody';
 
 class App extends React.Component{
   state = {user : []};
-  getData = async ()=>{
+  getData(){
       
-      let response = await fetch('https://assessment.api.vweb.app/user');
-      let res = await response.json();
+      fetch('https://assessment.api.vweb.app/user')
+      .then((res)=>res.json())
+      .then((res)=>{
           console.log(res);
           this.setState({user: res});
           // props.getUser(res);
           console.log("Hiiii",this.state.user);
+      });
 
   }
 
-  async componentDidMount(){
-      await this.getData();
+  componentDidMount(){
+      this.getData();
   }
 
   render(){
