@@ -4,11 +4,15 @@ import ReactDOM from 'react-dom';
 import App from './ui/App';
 import Container from '@mui/material/Container';
 import reportWebVitals from './reportWebVitals';
+// import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 
+// const darkTheme = createTheme({ palette: { mode: "dark" } });
 ReactDOM.render(
   <React.StrictMode>
-    <Container  maxWidth="xl">
+    <Container  maxWidth="xl" style={{backgroundColor:'#000'}}>
+    {/* <ThemeProvider theme={darkTheme}> */}
       <App />
+    {/* </ThemeProvider> */}
     </Container>
     
   </React.StrictMode>,

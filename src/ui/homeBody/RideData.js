@@ -24,6 +24,7 @@ export default function Elevation({ data }) {
         <Grid item xs={12} key={index}>
           <ThemeProvider theme={theme}>
             {/* <FetchApi></FetchApi> */}
+            
             <Box
               sx={{
                 p: 2,
@@ -38,9 +39,9 @@ export default function Elevation({ data }) {
                   {`elevation=${elevation}`}
                 </Item>
               ))} */}
-
+              
               {data.map((ride) => (
-                <Item>
+                <Item key={ride.origin_station_code}>
                   <Container>
                     <Grid container justifyContent="space-between">
                       <Grid item>

@@ -2,16 +2,16 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box, Grid, Typography, Button, Menu, MenuItem } from "@mui/material";
-
-import FilterListIcon from "@mui/icons-material/FilterList";
+import SortIcon from '@mui/icons-material/Sort';
+// import FilterListIcon from "@mui/icons-material/FilterList";
 import AutoSelect from "./Autocomplete";
 
-export default function ColorTabs({ upcomming, pastrides }) {
-  const [value, setValue] = React.useState("one");
+export default function ColorTabs({ upcomming, pastrides, tabvalue, handleTabChange }) {
+  // const [value, setValue] = React.useState("one");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [autocomplete, setAutoComplete] = React.useState(false);
@@ -36,15 +36,15 @@ export default function ColorTabs({ upcomming, pastrides }) {
       >
         <Grid item>
           <Tabs
-            value={value}
-            onChange={handleChange}
+            value={tabvalue}
+            onChange={(event, newvalue)=>handleTabChange(event, newvalue)}
             textColor="secondary"
             indicatorColor="secondary"
             aria-label="secondary tabs example"
           >
-            <Tab value="one" label="Nearest Rides" />
-            <Tab value="two" label={`Upcomming Rides(${upcomming})`} />
-            <Tab value="three" label={`Past Rides(${pastrides})`} />
+            <Tab value="1" label="Nearest Rides" />
+            <Tab value="2" label={`Upcomming Rides(${upcomming})`} />
+            <Tab value="3" label={`Past Rides(${pastrides})`} />
           </Tabs>
         </Grid>
         <Grid item>
@@ -56,7 +56,8 @@ export default function ColorTabs({ upcomming, pastrides }) {
             onClick={handleClick}
           >
             <Grid container direction="row">
-              <FilterListIcon sx={{ marginLeft: "auto" }}></FilterListIcon>
+
+              <SortIcon sx={{ marginLeft: "auto" }}></SortIcon>
               <Typography>Filter</Typography>
             </Grid>
           </Button>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Navbar from "./Navbar/Navbar";
 import Container from '@mui/material/Container';
-import HomeBody from './homeBody/HomeBody';
+import HomeBody from './HomeBody/HomeBody';
 // function App() {
 //   return (
     
@@ -18,29 +18,28 @@ import HomeBody from './homeBody/HomeBody';
 
 class App extends React.Component{
   state = {user : []};
-  getData(){
+  getData = async ()=>{
       
-      fetch('https://assessment.api.vweb.app/user')
-      .then((res)=>res.json())
-      .then((res)=>{
+      let response = await fetch('https://assessment.api.vweb.app/user');
+      let res = await response.json();
           console.log(res);
           this.setState({user: res});
           // props.getUser(res);
           console.log("Hiiii",this.state.user);
-      });
 
   }
 
-  componentDidMount(){
-      this.getData();
+  async componentDidMount(){
+      await this.getData();
   }
 
   render(){
     return(
-      <Container fixed className="App" style={{backgroundColor: '#000'}}>
+      <Container fixed className="App" style={{backgroundColor: '#444'}}>
         <Navbar user={this.state.user}></Navbar>
      {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
-       <HomeBody stationCode = {this.state.station_code}></HomeBody>
+     {console.log()}
+       <HomeBody stationCode = {this.state.user.station_code}></HomeBody>
       </Container>
     );
   }

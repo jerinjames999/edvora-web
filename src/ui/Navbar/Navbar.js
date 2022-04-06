@@ -74,7 +74,7 @@ import UserProfile from "./UserProfile";
 class Navbar extends React.Component {
   render() {
     return (
-      <AppBar sx={{ background: "#222" }} position="static">
+      <AppBar sx={{ background: "#222" }} position="sticky">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography variant="h6" noWrap component="div">
