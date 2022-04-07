@@ -2,7 +2,6 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { Box, Container, Chip, Typography } from "@mui/material";
-import FetchApi from "./FetchApi";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -15,13 +14,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
-const lightTheme = createTheme({ palette: { mode: "light" } });
+// const lightTheme = createTheme({ palette: { mode: "light" } });
 
 export default function Elevation({ data }) {
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} >
       {[darkTheme].map((theme, index) => (
-        <Grid item xs={12} key={index}>
+        <Grid item xs={12}>
           <ThemeProvider theme={theme}>
             {/* <FetchApi></FetchApi> */}
             
@@ -34,14 +33,9 @@ export default function Elevation({ data }) {
                 gap: 3,
               }}
             >
-              {/* {[4].map((elevation) => (
-                <Item key={elevation} elevation={elevation}>
-                  {`elevation=${elevation}`}
-                </Item>
-              ))} */}
               
               {data.map((ride) => (
-                <Item key={ride.origin_station_code}>
+                <Item >
                   <Container>
                     <Grid container justifyContent="space-between">
                       <Grid item>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Navbar from "./Navbar/Navbar";
 import Container from '@mui/material/Container';
-import HomeBody from './HomeBody/homeBody';
+import HomeBody from './HomeBody';
 // function App() {
 //   return (
     

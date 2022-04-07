@@ -3,27 +3,28 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box, Grid, Typography, Button, Menu, MenuItem } from "@mui/material";
 import SortIcon from '@mui/icons-material/Sort';
-// import FilterListIcon from "@mui/icons-material/FilterList";
 import AutoSelect from "./Autocomplete";
 
 export default function ColorTabs({ upcomming, pastrides, tabvalue, handleTabChange }) {
-  // const [value, setValue] = React.useState("one");
 
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [autocomplete, setAutoComplete] = React.useState(false);
+  const [autocompleteState, setAutoCompleteState] = React.useState(false);
+  const [autocompleteCity, setAutoCompleteCity] = React.useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setAutoCompleteState(false);
+    setAutoCompleteCity(false);
   };
-  const toggleAutoComplete = () => {
-    setAutoComplete(!autocomplete);
+  const toggleAutoCompleteState = () => {
+    autocompleteState(!autocompleteState);
+  };
+  const toggleAutoCompleteCity = () => {
+    autocompleteCity(!autocompleteCity);
   };
 
   return (
@@ -72,14 +73,20 @@ export default function ColorTabs({ upcomming, pastrides, tabvalue, handleTabCha
             }}
           >
             <MenuItem>
-              {autocomplete ? (
+              {autocompleteState ? (
                 <AutoSelect state={state} />
               ) : (
-                <Button onClick={toggleAutoComplete}>State</Button>
+                <Button onClick={toggleAutoCompleteState}>State</Button>
               )}
             </MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem>
+              {autocompleteCity ? (
+                <AutoSelect state={state} />
+              ) : (
+                <Button onClick={toggleAutoCompleteCity}>City</Button>
+              )}
+            </MenuItem>
+            {/* <MenuItem onClick={handleClose}>City</MenuItem> */}
           </Menu>
         </Grid>
       </Grid>
