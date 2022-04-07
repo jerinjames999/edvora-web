@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 import Navbar from "./Navbar/Navbar";
-import Container from '@mui/material/Container';
-import HomeBody from './HomeBody';
+import Container from "@mui/material/Container";
+import HomeBodyComp from "./HomeBody/index";
 // function App() {
 //   return (
-    
+
 //     <Container fixed className="App">
 //       <Navbar></Navbar>
 //     {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
@@ -16,32 +16,30 @@ import HomeBody from './HomeBody';
 
 // export default App;
 
-class App extends React.Component{
-  state = {user : []};
-  getData(){
-      
-      fetch('https://assessment.api.vweb.app/user')
-      .then((res)=>res.json())
-      .then((res)=>{
-          console.log(res);
-          this.setState({user: res});
-          // props.getUser(res);
-          console.log("Hiiii",this.state.user);
+class App extends React.Component {
+  state = { user: [] };
+  getData() {
+    fetch("https://assessment.api.vweb.app/user")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        this.setState({ user: res });
+        // props.getUser(res);
+        console.log("Hiiii", this.state.user);
       });
-
   }
 
-  componentDidMount(){
-      this.getData();
+  componentDidMount() {
+    this.getData();
   }
 
-  render(){
-    return(
-      <Container fixed className="App" style={{backgroundColor: '#444'}}>
+  render() {
+    return (
+      <Container fixed className="App" style={{ backgroundColor: "#444" }}>
         <Navbar user={this.state.user}></Navbar>
-     {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
-     {console.log()}
-       <HomeBody stationCode = {this.state.user.station_code}></HomeBody>
+        {/* <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} /> */}
+        {console.log()}
+        <HomeBodyComp stationCode={this.state.user.station_code}></HomeBodyComp>
       </Container>
     );
   }
